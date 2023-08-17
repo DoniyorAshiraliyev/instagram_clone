@@ -1,16 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:instagram_clone/pages/main/feed_page.dart';
-import 'package:instagram_clone/pages/main/likes_page.dart';
-import 'package:instagram_clone/pages/main/profile_page.dart';
-import 'package:instagram_clone/pages/main/search_page.dart';
-import 'package:instagram_clone/pages/main/upload_page.dart';
+import 'package:instagram_clone/presentation/pages/screens/main/feed_page.dart';
+import 'package:instagram_clone/presentation/pages/screens/main/likes_page.dart';
+import 'package:instagram_clone/presentation/pages/screens/main/profile_page.dart';
+import 'package:instagram_clone/presentation/pages/screens/main/search_page.dart';
+import 'package:instagram_clone/presentation/pages/screens/main/upload_page.dart';
 
 
 class HomePage extends StatefulWidget {
-  static const String id = "home_page";
-
-  const HomePage({super.key});
+  static final String id = "home_page";
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -33,12 +31,12 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       body: PageView(
         controller: _pageController,
-        children:  [
-          FeedPage(pageController:_pageController),
-          const SearchPage(),
-          UploadPage(pageController:_pageController),
-          const LikesPage(),
-          const ProfilePage(),
+        children: [
+          FeedPage(pageController: _pageController,),
+          SearchPage(),
+          UploadPage(pageController: _pageController,),
+          LikesPage(),
+          ProfilePage(),
         ],
         onPageChanged: (int index){
           setState(() {
@@ -52,12 +50,12 @@ class _HomePageState extends State<HomePage> {
           setState(() {
             _currentTap = index;
             _pageController!.animateToPage(index,
-                duration: const Duration(milliseconds: 200), curve: Curves.easeIn);
+                duration: Duration(milliseconds: 200), curve: Curves.easeIn);
           });
         },
         currentIndex: _currentTap,
-        activeColor: const Color.fromRGBO(193, 53, 132, 1),
-        items: const [
+        activeColor: Color.fromRGBO(193, 53, 132, 1),
+        items: [
           BottomNavigationBarItem(
             icon: Icon(
               Icons.home,

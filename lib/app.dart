@@ -1,12 +1,12 @@
-
 import 'package:flutter/material.dart';
-import 'package:instagram_clone/pages/auth/signin_page.dart';
-import 'package:instagram_clone/pages/auth/signup_page.dart';
-import 'package:instagram_clone/pages/auth/splash_page.dart';
-import 'package:instagram_clone/pages/main/home_page.dart';
+import 'package:instagram_clone/presentation/pages/screens/auth/signin_page.dart';
+import 'package:instagram_clone/presentation/pages/screens/auth/signup_page.dart';
+import 'package:instagram_clone/presentation/pages/screens/auth/splash_page.dart';
+import 'package:instagram_clone/presentation/pages/screens/main/home_page.dart';
+import 'package:instagram_clone/services/auth_service.dart';
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class InstagramCloneApp extends StatelessWidget {
+  const InstagramCloneApp({super.key});
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -16,13 +16,13 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       // home: const SplashPage(),
-      home: const HomePage(),
+      home: const SplashPage(),
 
       routes: {
         SplashPage.id: (context) => const SplashPage(),
         SignInPage.id: (context) => const SignInPage(),
         SignUpPage.id: (context) => const SignUpPage(),
-        HomePage.id: (context) => const HomePage()
+        HomePage.id: (context) =>  HomePage()
       },
     );
   }
