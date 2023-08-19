@@ -6,7 +6,7 @@ import 'package:instagram_clone/services/auth_service.dart';
 
 
 class SignInPage extends StatefulWidget {
-  static final String id = "signin_page";
+  static const String id = "signin_page";
 
   const SignInPage({Key? key}) : super(key: key);
 
@@ -47,9 +47,9 @@ class _SignInPageState extends State<SignInPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        padding: EdgeInsets.all(20),
+        padding: const EdgeInsets.all(20),
         width: MediaQuery.of(context).size.width,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
@@ -67,7 +67,7 @@ class _SignInPageState extends State<SignInPage> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(
+                        const Text(
                           "Instagram",
                           style: TextStyle(
                               color: Colors.white,
@@ -77,16 +77,16 @@ class _SignInPageState extends State<SignInPage> {
 
                         //#email
                         Container(
-                          margin: EdgeInsets.only(top: 10),
+                          margin: const EdgeInsets.only(top: 10),
                           height: 50,
-                          padding: EdgeInsets.only(left: 10, right: 10),
+                          padding: const EdgeInsets.only(left: 10, right: 10),
                           decoration: BoxDecoration(
                               color: Colors.white.withOpacity(0.2),
                               borderRadius: BorderRadius.circular(7)),
                           child: TextField(
                             controller: emailController,
-                            style: TextStyle(color: Colors.white),
-                            decoration: InputDecoration(
+                            style: const TextStyle(color: Colors.white),
+                            decoration: const InputDecoration(
                                 hintText: "Email",
                                 border: InputBorder.none,
                                 hintStyle:
@@ -96,17 +96,17 @@ class _SignInPageState extends State<SignInPage> {
 
                         //#password
                         Container(
-                          margin: EdgeInsets.only(top: 10),
+                          margin: const EdgeInsets.only(top: 10),
                           height: 50,
-                          padding: EdgeInsets.only(left: 10, right: 10),
+                          padding: const EdgeInsets.only(left: 10, right: 10),
                           decoration: BoxDecoration(
                               color: Colors.white.withOpacity(0.2),
                               borderRadius: BorderRadius.circular(7)),
                           child: TextField(
                             controller: passwordController,
                             obscureText: true,
-                            style: TextStyle(color: Colors.white),
-                            decoration: InputDecoration(
+                            style: const TextStyle(color: Colors.white),
+                            decoration: const InputDecoration(
                                 hintText: "Password",
                                 border: InputBorder.none,
                                 hintStyle:
@@ -120,13 +120,13 @@ class _SignInPageState extends State<SignInPage> {
                             _doSignIn();
                           },
                           child: Container(
-                              margin: EdgeInsets.only(top: 10),
+                              margin: const EdgeInsets.only(top: 10),
                               height: 50,
-                              padding: EdgeInsets.only(left: 10, right: 10),
+                              padding: const EdgeInsets.only(left: 10, right: 10),
                               decoration: BoxDecoration(
                                   color: Colors.white.withOpacity(0.2),
                                   borderRadius: BorderRadius.circular(7)),
-                              child: Center(
+                              child: const Center(
                                 child: Text(
                                   "Sign In",
                                   style:
@@ -140,18 +140,18 @@ class _SignInPageState extends State<SignInPage> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
+                      const Text(
                         "Don`t have an account?",
                         style: TextStyle(color: Colors.white, fontSize: 16),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 10,
                       ),
                       GestureDetector(
                           onTap: () {
                             _callSignUpPage();
                           },
-                          child: Text(
+                          child: const Text(
                             "Sign Up",
                             style: TextStyle(
                                 color: Colors.white,
@@ -164,10 +164,10 @@ class _SignInPageState extends State<SignInPage> {
               ],
             ),
             isLoading
-                ? Center(
+                ? const Center(
               child: CircularProgressIndicator(),
             )
-                : SizedBox.shrink(),
+                : const SizedBox.shrink(),
           ],
         ),
       ),

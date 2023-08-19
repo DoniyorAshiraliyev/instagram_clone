@@ -4,25 +4,25 @@ import 'auth_service.dart';
 
 class FileService {
   static final _storage = FirebaseStorage.instance.ref();
-  static final folder_user = "user_images";
-  static final folder_post = "post_images";
+  static const folder_user = "user_images";
+  static const folder_post = "post_images";
 
-  static Future<String> uploadUserImage(File _image) async {
+  static Future<String> uploadUserImage(File image) async {
     String uid = AuthService.currentUserId();
-    String img_name = uid;
-    var firebaseStorageRef = _storage.child(folder_user).child(img_name);
-    var uploadTask = firebaseStorageRef.putFile(_image);
+    String imgName = uid;
+    var firebaseStorageRef = _storage.child(folder_user).child(imgName);
+    var uploadTask = firebaseStorageRef.putFile(image);
     final TaskSnapshot taskSnapshot = await uploadTask.whenComplete(() {});
     final String downloadUrl = await firebaseStorageRef.getDownloadURL();
     print(downloadUrl);
     return downloadUrl;
   }
 
-  static Future<String> uploadPostImage(File _image) async {
+  static Future<String> uploadPostImage(File image) async {
     String uid = AuthService.currentUserId();
-    String img_name = uid + "_" + DateTime.now().toString();
-    var firebaseStorageRef = _storage.child(folder_post).child(img_name);
-    var uploadTask = firebaseStorageRef.putFile(_image);
+    String imgName = "${uid}_${DateTime.now()}";
+    var firebaseStorageRef = _storage.child(folder_post).child(imgName);
+    var uploadTask = firebaseStorageRef.putFile(image);
     final TaskSnapshot taskSnapshot = await uploadTask.whenComplete(() {});
     final String downloadUrl = await firebaseStorageRef.getDownloadURL();
     print(downloadUrl);

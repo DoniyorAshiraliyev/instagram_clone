@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 
 sealed class AppRoute {
   // static signUpToSignIn(BuildContext context) {

@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:device_info_plus/device_info_plus.dart';
@@ -48,13 +47,13 @@ class Utils {
 
     if (Platform.isIOS) {
       params.addAll({
-        'device_id': getDeviceId!,
+        'device_id': getDeviceId,
         'device_type': "I",
         'device_token': fcmToken,
       });
     } else {
       params.addAll({
-        'device_id': getDeviceId!,
+        'device_id': getDeviceId,
         'device_type': "A",
         'device_token': fcmToken,
       });

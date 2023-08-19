@@ -69,18 +69,18 @@ class _ProfilePageState extends State<ProfilePage> {
         builder: (BuildContext bc) {
           return SafeArea(
             child: Container(
-              child: new Wrap(
+              child: Wrap(
                 children: <Widget>[
-                  new ListTile(
-                      leading: new Icon(Icons.photo_library),
-                      title: new Text('Pick Photo'),
+                  ListTile(
+                      leading: const Icon(Icons.photo_library),
+                      title: const Text('Pick Photo'),
                       onTap: () {
                         _imgFromGallery();
                         Navigator.of(context).pop();
                       }),
-                  new ListTile(
-                    leading: new Icon(Icons.photo_camera),
-                    title: new Text('Take Photo'),
+                  ListTile(
+                    leading: const Icon(Icons.photo_camera),
+                    title: const Text('Take Photo'),
                     onTap: () {
                       _imgFromCamera();
                       Navigator.of(context).pop();
@@ -105,11 +105,11 @@ class _ProfilePageState extends State<ProfilePage> {
   void _showMemberInfo(Member member) {
     setState(() {
       isLoading = false;
-      this.fullname = member.fullname;
-      this.email = member.email;
-      this.img_url = member.img_url;
-      this.count_following = member.following_count;
-      this.count_followers = member.followers_count;
+      fullname = member.fullname;
+      email = member.email;
+      img_url = member.img_url;
+      count_following = member.following_count;
+      count_followers = member.followers_count;
     });
   }
 
@@ -128,7 +128,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
   _dialogRemovePost(Post post) async{
     var result = await Utils.dialogCommon(context, "Insta Clone", "Do you want to detele this post?", false);
-    if(result != null && result){
+    if(result){
       setState(() {
         isLoading = true;
       });
@@ -140,7 +140,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
   _dialogLogout() async{
     var result = await Utils.dialogCommon(context, "Insta Clone", "Do you want to logout?", false);
-    if(result != null && result){
+    if(result){
       setState(() {
         isLoading = true;
       });
@@ -162,7 +162,7 @@ class _ProfilePageState extends State<ProfilePage> {
         appBar: AppBar(
           backgroundColor: Colors.white,
           elevation: 0,
-          title: Text(
+          title: const Text(
             "Profile",
             style: TextStyle(
                 color: Colors.black, fontFamily: "Billabong", fontSize: 25),
@@ -172,8 +172,8 @@ class _ProfilePageState extends State<ProfilePage> {
               onPressed: () {
                 _dialogLogout();
               },
-              icon: Icon(Icons.exit_to_app),
-              color: Color.fromRGBO(193, 53, 132, 1),
+              icon: const Icon(Icons.exit_to_app),
+              color: const Color.fromRGBO(193, 53, 132, 1),
             )
           ],
         ),
@@ -181,7 +181,7 @@ class _ProfilePageState extends State<ProfilePage> {
           children: [
             Container(
               width: double.infinity,
-              padding: EdgeInsets.all(10),
+              padding: const EdgeInsets.all(10),
               child: Column(
                 children: [
                   //#myphoto
@@ -192,18 +192,18 @@ class _ProfilePageState extends State<ProfilePage> {
                       child: Stack(
                         children: [
                           Container(
-                            padding: EdgeInsets.all(2),
+                            padding: const EdgeInsets.all(2),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(70),
                               border: Border.all(
                                 width: 1.5,
-                                color: Color.fromRGBO(193, 53, 132, 1),
+                                color: const Color.fromRGBO(193, 53, 132, 1),
                               ),
                             ),
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(35),
-                              child: img_url == null || img_url.isEmpty
-                                  ? Image(
+                              child: img_url.isEmpty
+                                  ? const Image(
                                 image: AssetImage(
                                     "assets/images/ic_person.png"),
                                 width: 70,
@@ -218,7 +218,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               ),
                             ),
                           ),
-                          Container(
+                          const SizedBox(
                             width: 80,
                             height: 80,
                             child: Column(
@@ -236,22 +236,22 @@ class _ProfilePageState extends State<ProfilePage> {
                       )),
 
                   //#myinfos
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Text(
                     fullname.toUpperCase(),
-                    style: TextStyle(
+                    style: const TextStyle(
                         color: Colors.black,
                         fontSize: 16,
                         fontWeight: FontWeight.bold),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 3,
                   ),
                   Text(
                     email,
-                    style: TextStyle(
+                    style: const TextStyle(
                         color: Colors.black54,
                         fontSize: 14,
                         fontWeight: FontWeight.normal),
@@ -259,7 +259,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
                   //#mycounts
                   Container(
-                    margin: EdgeInsets.only(top: 10),
+                    margin: const EdgeInsets.only(top: 10),
                     height: 80,
                     child: Row(
                       children: [
@@ -269,15 +269,15 @@ class _ProfilePageState extends State<ProfilePage> {
                               children: [
                                 Text(
                                   count_posts.toString(),
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       color: Colors.black,
                                       fontSize: 16,
                                       fontWeight: FontWeight.bold),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 3,
                                 ),
-                                Text(
+                                const Text(
                                   "POSTS",
                                   style: TextStyle(
                                       color: Colors.grey,
@@ -294,15 +294,15 @@ class _ProfilePageState extends State<ProfilePage> {
                               children: [
                                 Text(
                                   count_followers.toString(),
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       color: Colors.black,
                                       fontSize: 16,
                                       fontWeight: FontWeight.bold),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 3,
                                 ),
-                                Text(
+                                const Text(
                                   "FOLLOWERS",
                                   style: TextStyle(
                                       color: Colors.grey,
@@ -319,15 +319,15 @@ class _ProfilePageState extends State<ProfilePage> {
                               children: [
                                 Text(
                                   count_following.toString(),
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       color: Colors.black,
                                       fontSize: 16,
                                       fontWeight: FontWeight.bold),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 3,
                                 ),
-                                Text(
+                                const Text(
                                   "FOLLOWING",
                                   style: TextStyle(
                                       color: Colors.grey,
@@ -354,7 +354,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                   axisCount = 1;
                                 });
                               },
-                              icon: Icon(Icons.list_alt),
+                              icon: const Icon(Icons.list_alt),
                             ),
                           ),
                         ),
@@ -366,7 +366,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                   axisCount = 2;
                                 });
                               },
-                              icon: Icon(Icons.grid_view),
+                              icon: const Icon(Icons.grid_view),
                             ),
                           ),
                         ),
@@ -398,21 +398,21 @@ class _ProfilePageState extends State<ProfilePage> {
           _dialogRemovePost(post);
         },
         child: Container(
-          margin: EdgeInsets.all(5),
+          margin: const EdgeInsets.all(5),
           child: Column(
             children: [
               Expanded(
                 child: CachedNetworkImage(
                   width: double.infinity,
                   imageUrl: post.img_post,
-                  placeholder: (context, url) => Center(
+                  placeholder: (context, url) => const Center(
                     child: CircularProgressIndicator(),
                   ),
-                  errorWidget: (context, url, error) => Icon(Icons.error),
+                  errorWidget: (context, url, error) => const Icon(Icons.error),
                   fit: BoxFit.cover,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 3,
               ),
               Text(

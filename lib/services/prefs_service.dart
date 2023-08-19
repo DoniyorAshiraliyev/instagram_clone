@@ -2,9 +2,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class Prefs {
   // Firebase Token
-  static Future<bool> saveFCM(String fcm_token) async {
+  static Future<bool> saveFCM(String fcmToken) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    return prefs.setString('fcm_token', fcm_token);
+    return prefs.setString('fcm_token', fcmToken);
   }
 
   static Future<String> loadFCM() async {

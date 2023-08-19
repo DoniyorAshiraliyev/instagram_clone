@@ -65,12 +65,12 @@ class DBService {
         .startAt([keyword]).get();
     print(querySnapshot.docs.length);
 
-    querySnapshot.docs.forEach((result) {
+    for (var result in querySnapshot.docs) {
       Member newMember = Member.fromJson(result.data());
       if (newMember.uid != uid) {
         members.add(newMember);
       }
-    });
+    }
 
     return members;
   }
@@ -120,9 +120,9 @@ class DBService {
         .collection(folder_posts)
         .get();
 
-    querySnapshot.docs.forEach((result) {
+    for (var result in querySnapshot.docs) {
       posts.add(Post.fromJson(result.data()));
-    });
+    }
     return posts;
   }
 
@@ -134,11 +134,11 @@ class DBService {
         .doc(uid)
         .collection(folder_feeds)
         .get();
-    querySnapshot.docs.forEach((result) {
+    for (var result in querySnapshot.docs) {
       Post post = Post.fromJson(result.data());
       if (post.uid == uid) post.mine = true;
       posts.add(post);
-    });
+    }
 
     return posts;
   }
@@ -175,11 +175,11 @@ class DBService {
         .where("liked", isEqualTo: true)
         .get();
 
-    querySnapshot.docs.forEach((result) {
+    for (var result in querySnapshot.docs) {
       Post post = Post.fromJson(result.data());
       if (post.uid == uid) post.mine = true;
       posts.add(post);
-    });
+    }
     return posts;
   }
 
@@ -235,11 +235,11 @@ class DBService {
         .doc(someone.uid)
         .collection(folder_posts)
         .get();
-    querySnapshot.docs.forEach((result) {
+    for (var result in querySnapshot.docs) {
       var post = Post.fromJson(result.data());
       post.liked = false;
       posts.add(post);
-    });
+    }
 
     for (Post post in posts) {
       storeFeed(post);
@@ -254,9 +254,9 @@ class DBService {
         .collection(folder_posts)
         .get();
 
-    querySnapshot.docs.forEach((result) {
+    for (var result in querySnapshot.docs) {
       posts.add(Post.fromJson(result.data()));
-    });
+    }
 
     for (Post post in posts) {
       removeFeed(post);

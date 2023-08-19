@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:instagram_clone/presentation/pages/screens/auth/signin_page.dart';
@@ -8,10 +7,8 @@ import 'package:instagram_clone/services/auth_service.dart';
 import 'package:instagram_clone/services/log_service.dart';
 import 'package:instagram_clone/services/prefs_service.dart';
 
-
-
 class SplashPage extends StatefulWidget {
-  static final String id = "splash_page";
+  static const String id = "splash_page";
 
   const SplashPage({Key? key}) : super(key: key);
 
@@ -20,7 +17,8 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
-  static final FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
+  static final FirebaseMessaging _firebaseMessaging =
+      FirebaseMessaging.instance;
 
   @override
   void initState() {
@@ -29,7 +27,7 @@ class _SplashPageState extends State<SplashPage> {
     _initNotification();
   }
 
-  _initNotification() async{
+  _initNotification() async {
     NotificationSettings settings = await _firebaseMessaging.requestPermission(
       alert: true,
       announcement: false,
@@ -40,17 +38,17 @@ class _SplashPageState extends State<SplashPage> {
       sound: true,
     );
 
-    if(settings.authorizationStatus == AuthorizationStatus.authorized){
+    if (settings.authorizationStatus == AuthorizationStatus.authorized) {
       LogService.d('User granted permission');
-    }else{
+    } else {
       LogService.d('User declined or has not accepted permission');
     }
 
-    _firebaseMessaging.getToken().then((value) async{
+    _firebaseMessaging.getToken().then((value) async {
       String fcmToken = value.toString();
       Prefs.saveFCM(fcmToken);
       String token = await Prefs.loadFCM();
-      LogService.i("FCM Token: ${token}");
+      LogService.i("FCM Token: $token");
     });
 
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
@@ -63,16 +61,16 @@ class _SplashPageState extends State<SplashPage> {
     });
   }
 
-  _initTimer(){
-    Timer(Duration(seconds: 2), (){
+  _initTimer() {
+    Timer(const Duration(seconds: 2), () {
       _callNextPage();
     });
   }
 
-  _callNextPage(){
-    if(AuthService.isLoggedIn()){
+  _callNextPage() {
+    if (AuthService.isLoggedIn()) {
       Navigator.pushReplacementNamed(context, HomePage.id);
-    }else{
+    } else {
       Navigator.pushReplacementNamed(context, SignInPage.id);
     }
   }
@@ -82,7 +80,7 @@ class _SplashPageState extends State<SplashPage> {
     return Scaffold(
       body: Container(
         width: MediaQuery.of(context).size.width,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
@@ -91,7 +89,7 @@ class _SplashPageState extends State<SplashPage> {
                 Color.fromRGBO(131, 58, 180, 1),
               ]),
         ),
-        child: Column(
+        child: const Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             Expanded(

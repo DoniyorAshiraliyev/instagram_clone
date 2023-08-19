@@ -8,7 +8,9 @@ import 'package:instagram_clone/presentation/pages/screens/main/upload_page.dart
 
 
 class HomePage extends StatefulWidget {
-  static final String id = "home_page";
+  static const String id = "home_page";
+
+  const HomePage({super.key});
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -33,10 +35,10 @@ class _HomePageState extends State<HomePage> {
         controller: _pageController,
         children: [
           FeedPage(pageController: _pageController,),
-          SearchPage(),
+          const SearchPage(),
           UploadPage(pageController: _pageController,),
-          LikesPage(),
-          ProfilePage(),
+          const LikesPage(),
+          const ProfilePage(),
         ],
         onPageChanged: (int index){
           setState(() {
@@ -50,12 +52,12 @@ class _HomePageState extends State<HomePage> {
           setState(() {
             _currentTap = index;
             _pageController!.animateToPage(index,
-                duration: Duration(milliseconds: 200), curve: Curves.easeIn);
+                duration: const Duration(milliseconds: 200), curve: Curves.easeIn);
           });
         },
         currentIndex: _currentTap,
-        activeColor: Color.fromRGBO(193, 53, 132, 1),
-        items: [
+        activeColor: const Color.fromRGBO(193, 53, 132, 1),
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(
               Icons.home,

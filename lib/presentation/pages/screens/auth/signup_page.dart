@@ -9,7 +9,7 @@ import '../main/home_page.dart';
 
 
 class SignUpPage extends StatefulWidget {
-  static final String id = "signup_page";
+  static const String id = "signup_page";
 
   const SignUpPage({Key? key}) : super(key: key);
 
@@ -61,9 +61,9 @@ class _SignUpPageState extends State<SignUpPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-          padding: EdgeInsets.all(20),
+          padding: const EdgeInsets.all(20),
           width: MediaQuery.of(context).size.width,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
@@ -81,7 +81,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(
+                          const Text(
                             "Instagram",
                             style: TextStyle(
                                 color: Colors.white,
@@ -91,16 +91,16 @@ class _SignUpPageState extends State<SignUpPage> {
 
                           //#fullname
                           Container(
-                            margin: EdgeInsets.only(top: 10),
+                            margin: const EdgeInsets.only(top: 10),
                             height: 50,
-                            padding: EdgeInsets.only(left: 10, right: 10),
+                            padding: const EdgeInsets.only(left: 10, right: 10),
                             decoration: BoxDecoration(
                                 color: Colors.white.withOpacity(0.2),
                                 borderRadius: BorderRadius.circular(7)),
                             child: TextField(
                               controller: fullnameController,
-                              style: TextStyle(color: Colors.white),
-                              decoration: InputDecoration(
+                              style: const TextStyle(color: Colors.white),
+                              decoration: const InputDecoration(
                                   hintText: "Fullname",
                                   border: InputBorder.none,
                                   hintStyle: TextStyle(
@@ -110,16 +110,16 @@ class _SignUpPageState extends State<SignUpPage> {
 
                           //#email
                           Container(
-                            margin: EdgeInsets.only(top: 10),
+                            margin: const EdgeInsets.only(top: 10),
                             height: 50,
-                            padding: EdgeInsets.only(left: 10, right: 10),
+                            padding: const EdgeInsets.only(left: 10, right: 10),
                             decoration: BoxDecoration(
                                 color: Colors.white.withOpacity(0.2),
                                 borderRadius: BorderRadius.circular(7)),
                             child: TextField(
                               controller: emailController,
-                              style: TextStyle(color: Colors.white),
-                              decoration: InputDecoration(
+                              style: const TextStyle(color: Colors.white),
+                              decoration: const InputDecoration(
                                   hintText: "Email",
                                   border: InputBorder.none,
                                   hintStyle: TextStyle(
@@ -129,17 +129,17 @@ class _SignUpPageState extends State<SignUpPage> {
 
                           //#password
                           Container(
-                            margin: EdgeInsets.only(top: 10),
+                            margin: const EdgeInsets.only(top: 10),
                             height: 50,
-                            padding: EdgeInsets.only(left: 10, right: 10),
+                            padding: const EdgeInsets.only(left: 10, right: 10),
                             decoration: BoxDecoration(
                                 color: Colors.white.withOpacity(0.2),
                                 borderRadius: BorderRadius.circular(7)),
                             child: TextField(
                               controller: passwordController,
                               obscureText: true,
-                              style: TextStyle(color: Colors.white),
-                              decoration: InputDecoration(
+                              style: const TextStyle(color: Colors.white),
+                              decoration: const InputDecoration(
                                   hintText: "Password",
                                   border: InputBorder.none,
                                   hintStyle: TextStyle(
@@ -149,17 +149,17 @@ class _SignUpPageState extends State<SignUpPage> {
 
                           //#cpassword
                           Container(
-                            margin: EdgeInsets.only(top: 10),
+                            margin: const EdgeInsets.only(top: 10),
                             height: 50,
-                            padding: EdgeInsets.only(left: 10, right: 10),
+                            padding: const EdgeInsets.only(left: 10, right: 10),
                             decoration: BoxDecoration(
                                 color: Colors.white.withOpacity(0.2),
                                 borderRadius: BorderRadius.circular(7)),
                             child: TextField(
                               controller: cpasswordController,
                               obscureText: true,
-                              style: TextStyle(color: Colors.white),
-                              decoration: InputDecoration(
+                              style: const TextStyle(color: Colors.white),
+                              decoration: const InputDecoration(
                                   hintText: "Confirm Password",
                                   border: InputBorder.none,
                                   hintStyle: TextStyle(
@@ -173,13 +173,13 @@ class _SignUpPageState extends State<SignUpPage> {
                               _doSignUp();
                             },
                             child: Container(
-                                margin: EdgeInsets.only(top: 10),
+                                margin: const EdgeInsets.only(top: 10),
                                 height: 50,
-                                padding: EdgeInsets.only(left: 10, right: 10),
+                                padding: const EdgeInsets.only(left: 10, right: 10),
                                 decoration: BoxDecoration(
                                     color: Colors.white.withOpacity(0.2),
                                     borderRadius: BorderRadius.circular(7)),
-                                child: Center(
+                                child: const Center(
                                   child: Text(
                                     "Sign Up",
                                     style: TextStyle(
@@ -193,18 +193,18 @@ class _SignUpPageState extends State<SignUpPage> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(
+                        const Text(
                           "Already have an account?",
                           style: TextStyle(color: Colors.white, fontSize: 16),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 10,
                         ),
                         GestureDetector(
                             onTap: () {
                               _callSignInPage();
                             },
-                            child: Text(
+                            child: const Text(
                               "Sign In",
                               style: TextStyle(
                                   color: Colors.white,
@@ -217,10 +217,10 @@ class _SignUpPageState extends State<SignUpPage> {
                 ],
               ),
               isLoading
-                  ? Center(
+                  ? const Center(
                 child: CircularProgressIndicator(),
               )
-                  : SizedBox.shrink(),
+                  : const SizedBox.shrink(),
             ],
           )),
     );

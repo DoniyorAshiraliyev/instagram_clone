@@ -62,7 +62,7 @@ class _FeedPageState extends State<FeedPage> {
   _dialogRemovePost(Post post) async {
     var result = await Utils.dialogCommon(
         context, "Insta Clone", "Do you want to remove this post?", false);
-    if (result != null && result) {
+    if (result) {
       setState(() {
         isLoading = true;
       });
@@ -85,7 +85,7 @@ class _FeedPageState extends State<FeedPage> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        title: Text(
+        title: const Text(
           "Instagram",
           style: TextStyle(
               color: Colors.black, fontFamily: 'Billabong', fontSize: 30),
@@ -94,10 +94,10 @@ class _FeedPageState extends State<FeedPage> {
           IconButton(
             onPressed: () {
               widget.pageController!.animateToPage(2,
-                  duration: Duration(microseconds: 200), curve: Curves.easeIn);
+                  duration: const Duration(microseconds: 200), curve: Curves.easeIn);
             },
-            icon: Icon(Icons.camera_alt),
-            color: Color.fromRGBO(193, 53, 132, 1),
+            icon: const Icon(Icons.camera_alt),
+            color: const Color.fromRGBO(193, 53, 132, 1),
           ),
         ],
       ),
@@ -110,10 +110,10 @@ class _FeedPageState extends State<FeedPage> {
             },
           ),
           isLoading
-              ? Center(
+              ? const Center(
             child: CircularProgressIndicator(),
           )
-              : SizedBox.shrink(),
+              : const SizedBox.shrink(),
         ],
       ),
     );
@@ -124,10 +124,10 @@ class _FeedPageState extends State<FeedPage> {
       color: Colors.white,
       child: Column(
         children: [
-          Divider(),
+          const Divider(),
           //#user info
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 10),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -136,7 +136,7 @@ class _FeedPageState extends State<FeedPage> {
                     ClipRRect(
                       borderRadius: BorderRadius.circular(40),
                       child: post.img_user.isEmpty
-                          ? Image(
+                          ? const Image(
                         image: AssetImage("assets/images/ic_person.png"),
                         width: 40,
                         height: 40,
@@ -149,7 +149,7 @@ class _FeedPageState extends State<FeedPage> {
                         fit: BoxFit.cover,
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 10,
                     ),
                     Column(
@@ -157,15 +157,15 @@ class _FeedPageState extends State<FeedPage> {
                       children: [
                         Text(
                           post.fullname,
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontWeight: FontWeight.bold, color: Colors.black),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 3,
                         ),
                         Text(
                           post.date,
-                          style: TextStyle(fontWeight: FontWeight.normal),
+                          style: const TextStyle(fontWeight: FontWeight.normal),
                         ),
                       ],
                     ),
@@ -173,26 +173,26 @@ class _FeedPageState extends State<FeedPage> {
                 ),
                 post.mine
                     ? IconButton(
-                  icon: Icon(Icons.more_horiz),
+                  icon: const Icon(Icons.more_horiz),
                   onPressed: () {
                     _dialogRemovePost(post);
                   },
                 )
-                    : SizedBox.shrink(),
+                    : const SizedBox.shrink(),
               ],
             ),
           ),
           //#post image
-          SizedBox(
+          const SizedBox(
             height: 8,
           ),
           CachedNetworkImage(
             width: MediaQuery.of(context).size.width,
             imageUrl: post.img_post,
-            placeholder: (context, url) => Center(
+            placeholder: (context, url) => const Center(
               child: CircularProgressIndicator(),
             ),
-            errorWidget: (context, url, error) => Icon(Icons.error),
+            errorWidget: (context, url, error) => const Icon(Icons.error),
             fit: BoxFit.cover,
           ),
 
@@ -210,18 +210,18 @@ class _FeedPageState extends State<FeedPage> {
                       }
                     },
                     icon: post.liked
-                        ? Icon(
+                        ? const Icon(
                       CupertinoIcons.heart_fill,
                       color: Colors.red,
                     )
-                        : Icon(
+                        : const Icon(
                       CupertinoIcons.heart,
                       color: Colors.black,
                     ),
                   ),
                   IconButton(
                     onPressed: () {},
-                    icon: Icon(
+                    icon: const Icon(
                       CupertinoIcons.share_solid,
                     ),
                   ),
@@ -233,13 +233,13 @@ class _FeedPageState extends State<FeedPage> {
           //#caption
           Container(
             width: MediaQuery.of(context).size.width,
-            margin: EdgeInsets.only(left: 10, right: 10, bottom: 10),
+            margin: const EdgeInsets.only(left: 10, right: 10, bottom: 10),
             child: RichText(
               softWrap: true,
               overflow: TextOverflow.visible,
               text: TextSpan(
-                  text: "${post.caption}",
-                  style: TextStyle(color: Colors.black)),
+                  text: post.caption,
+                  style: const TextStyle(color: Colors.black)),
             ),
           ),
         ],

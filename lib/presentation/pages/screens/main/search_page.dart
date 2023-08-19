@@ -68,7 +68,7 @@ class _SearchPageState extends State<SearchPage> {
         appBar: AppBar(
           backgroundColor: Colors.white,
           elevation: 0,
-          title: Text(
+          title: const Text(
             "Search",
             style: TextStyle(
                 color: Colors.black, fontFamily: "Billabong", fontSize: 25),
@@ -77,21 +77,21 @@ class _SearchPageState extends State<SearchPage> {
         body: Stack(
           children: [
             Container(
-              padding: EdgeInsets.only(left: 20, right: 20),
+              padding: const EdgeInsets.only(left: 20, right: 20),
               child: Column(
                 children: [
                   //#search member
                   Container(
-                    margin: EdgeInsets.only(bottom: 10),
-                    padding: EdgeInsets.only(left: 10, right: 10),
+                    margin: const EdgeInsets.only(bottom: 10),
+                    padding: const EdgeInsets.only(left: 10, right: 10),
                     height: 45,
                     decoration: BoxDecoration(
                         color: Colors.grey.withOpacity(0.2),
                         borderRadius: BorderRadius.circular(7)),
                     child: TextField(
-                      style: TextStyle(color: Colors.black87),
+                      style: const TextStyle(color: Colors.black87),
                       controller: searchController,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                           hintText: "Search",
                           border: InputBorder.none,
                           hintStyle:
@@ -120,23 +120,23 @@ class _SearchPageState extends State<SearchPage> {
   }
 
   Widget _itemOfMember(Member member) {
-    return Container(
+    return SizedBox(
       height: 90,
       child: Row(
         children: [
           Container(
-            padding: EdgeInsets.all(2),
+            padding: const EdgeInsets.all(2),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(70),
               border: Border.all(
                 width: 1.5,
-                color: Color.fromRGBO(193, 53, 132, 1),
+                color: const Color.fromRGBO(193, 53, 132, 1),
               ),
             ),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(22.5),
               child: member.img_url.isEmpty
-                  ? Image(
+                  ? const Image(
                 image: AssetImage("assets/images/ic_person.png"),
                 width: 45,
                 height: 45,
@@ -150,7 +150,7 @@ class _SearchPageState extends State<SearchPage> {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             width: 15,
           ),
           Column(
@@ -159,14 +159,14 @@ class _SearchPageState extends State<SearchPage> {
             children: [
               Text(
                 member.fullname,
-                style: TextStyle(fontWeight: FontWeight.bold),
+                style: const TextStyle(fontWeight: FontWeight.bold),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 3,
               ),
               Text(
                 member.email,
-                style: TextStyle(color: Colors.black54),
+                style: const TextStyle(color: Colors.black54),
               ),
             ],
           ),
@@ -190,7 +190,7 @@ class _SearchPageState extends State<SearchPage> {
                         border: Border.all(width: 1, color: Colors.grey)),
                     child: Center(
                       child:
-                      member.followed ? Text("Following") : Text("Follow"),
+                      member.followed ? const Text("Following") : const Text("Follow"),
                     ),
                   ),
                 ),
